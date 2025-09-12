@@ -17,7 +17,7 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
     { id: "quotes", label: "Love Quotes", icon: Quote },
     { id: "dreams", label: "Future Dreams", icon: Star },
     { id: "surprise", label: "Surprise", icon: Sparkles },
-    { id: "messenger", label: "Messenger", icon: MessageCircle, href: "https://zmassenger.zmes.vercel.app" },
+    { id: "messenger", label: "Messenger", icon: MessageCircle, href: "https://zmes.vercel.app" },
   ];
 
   return (
