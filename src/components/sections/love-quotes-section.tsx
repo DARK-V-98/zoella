@@ -22,7 +22,7 @@ export const LoveQuotesSection = () => {
     }, []);
 
     return (
-        <section className="py-12 md:py-20 px-4">
+        <section className="w-full py-12 md:py-20 px-4">
             <div className="container mx-auto max-w-6xl">
                 {/* Section Header */}
                 <div className="text-center mb-12 md:mb-16 fade-in">

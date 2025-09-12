@@ -23,39 +23,43 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
     <>
       {/* Mobile Menu Button */}
       <button 
-        className="fixed top-6 right-6 z-50 md:hidden glass-card p-3 hover-glow"
+        className="fixed top-4 right-4 z-50 md:hidden glass-card p-3 hover-glow tap-highlight-transparent"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Sparkles className="w-6 h-6 text-neon-pink" />
       </button>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-40 glass-card transition-all duration-300 ${
-        isOpen ? 'translate-y-0' : '-translate-y-full md:translate-y-0'
-      }`}>
-        <div className="container mx-auto px-4 py-3 md:py-4">
+      <nav className={`fixed top-0 left-0 w-full z-40 glass-card transition-transform duration-300 ease-in-out ${
+        isOpen ? 'translate-y-0' : '-translate-y-full'
+      } md:translate-y-0`}>
+        <div className="container mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="princess-text mobile-subheading font-bold mb-3 md:mb-0">
+            <div className="princess-text text-xl md:text-2xl font-bold mb-4 md:mb-0">
               Princess Zoella 👑
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-1 md:gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <button
                     key={item.id}
                     onClick={() => {
+                      const element = document.getElementById(item.id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
                       setActiveSection(item.id);
                       setIsOpen(false);
                     }}
-                    className={`flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-lg transition-all duration-300 hover-glow touch-manipulation ${
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover-glow touch-manipulation tap-highlight-transparent ${
                       activeSection === item.id 
                         ? 'bg-neon-pink text-pearl-white shadow-glow' 
                         : 'text-foreground hover:text-neon-pink'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="text-sm md:text-base hidden xs:inline">{item.label}</span>
+                    <span className="text-sm">{item.label}</span>
                   </button>
                 );
               })}

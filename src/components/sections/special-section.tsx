@@ -49,20 +49,20 @@ export const SpecialSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-dreamy">
+    <section className="w-full py-20 px-4 bg-gradient-dreamy">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold princess-text mb-6">
+          <h2 className="mobile-heading font-bold princess-text mb-6">
             Why You're So Special 👑
           </h2>
-          <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
+          <p className="mobile-body text-foreground/80 max-w-2xl mx-auto">
             Every reason why you mean the world to me, my beautiful Princess
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;
             const isFlipped = flippedCard === reason.id;
@@ -74,7 +74,7 @@ export const SpecialSection = () => {
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div 
-                  className="relative h-80 cursor-pointer group perspective-1000"
+                  className="relative h-72 md:h-80 cursor-pointer group perspective-1000 tap-highlight-transparent"
                   onClick={() => handleCardClick(reason.id)}
                 >
                   {/* Card Container with 3D flip effect */}
@@ -84,12 +84,12 @@ export const SpecialSection = () => {
                     
                     {/* Front Side */}
                     <div className="absolute inset-0 backface-hidden">
-                      <div className="glass-card h-full p-8 hover-glow flex flex-col items-center justify-center text-center">
-                        <Icon className="w-16 h-16 text-neon-pink animate-sparkle mb-6" />
-                        <h3 className="text-2xl font-bold princess-text mb-4">
+                      <div className="glass-card h-full p-6 md:p-8 hover-glow flex flex-col items-center justify-center text-center">
+                        <Icon className="w-12 h-12 md:w-16 md:h-16 text-neon-pink animate-sparkle mb-4" />
+                        <h3 className="text-xl md:text-2xl font-bold princess-text mb-2">
                           {reason.title}
                         </h3>
-                        <p className="text-sm text-foreground/60 uppercase tracking-wider font-medium">
+                        <p className="text-xs md:text-sm text-foreground/60 uppercase tracking-wider font-medium">
                           Click to reveal 💖
                         </p>
                       </div>
@@ -98,8 +98,8 @@ export const SpecialSection = () => {
                     {/* Back Side */}
                     <div className="absolute inset-0 backface-hidden rotate-y-180">
                       <div className="glass-card h-full p-6 flex flex-col items-center justify-center text-center bg-gradient-princess">
-                        <Icon className="w-12 h-12 text-pearl-white mb-6 animate-glow" />
-                        <h3 className="text-xl font-bold text-pearl-white mb-4">
+                        <Icon className="w-10 h-10 md:w-12 md:h-12 text-pearl-white mb-4 animate-glow" />
+                        <h3 className="text-lg md:text-xl font-bold text-pearl-white mb-3">
                           {reason.title}
                         </h3>
                         <p className="text-pearl-white/90 leading-relaxed text-sm">
@@ -116,11 +116,11 @@ export const SpecialSection = () => {
 
         {/* Bottom Message */}
         <div className="text-center mt-16 fade-in">
-          <div className="glass-card p-8 max-w-3xl mx-auto hover-glow">
-            <p className="text-2xl princess-text font-bold mb-4">
+          <div className="glass-card p-6 md:p-8 max-w-3xl mx-auto hover-glow">
+            <p className="mobile-subheading princess-text font-bold mb-4">
               Princess Zoella, you are perfect in every way 👑
             </p>
-            <p className="text-lg text-foreground/90 leading-relaxed">
+            <p className="mobile-body text-foreground/90 leading-relaxed">
               These are just a few of the countless reasons why you're so incredibly special. 
               You are my heart, my joy, my everything. Forever and always, my beautiful Princess 💖✨
             </p>

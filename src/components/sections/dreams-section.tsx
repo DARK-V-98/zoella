@@ -48,7 +48,7 @@ const dreams = [
 
 export const DreamsSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-pearl-white via-cream-white to-rose-blush relative overflow-hidden">
+    <section className="w-full py-20 px-4 bg-gradient-to-br from-pearl-white via-cream-white to-rose-blush relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 animate-float opacity-30">✨</div>
@@ -60,16 +60,16 @@ export const DreamsSection = () => {
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold princess-text mb-6">
+          <h2 className="mobile-heading font-bold princess-text mb-6">
             Future Dreams Together 🌟
           </h2>
-          <p className="text-xl text-foreground/80 max-w-3xl mx-auto">
+          <p className="mobile-body text-foreground/80 max-w-3xl mx-auto">
             All the magical adventures and beautiful moments waiting for us in our future, my Princess
           </p>
         </div>
 
         {/* Dreams Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {dreams.map((dream, index) => {
             const Icon = dream.icon;
 
@@ -81,28 +81,28 @@ export const DreamsSection = () => {
               >
                 <div className="group cursor-pointer">
                   {/* Dream Card */}
-                  <div className="glass-card p-8 h-full hover-glow transition-all duration-500 group-hover:scale-105">
+                  <div className="glass-card p-6 md:p-8 h-full hover-glow transition-all duration-500 group-hover:scale-105">
                     {/* Gradient Background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${dream.gradient} opacity-5 rounded-lg`}></div>
                     
                     {/* Content */}
-                    <div className="relative z-10">
+                    <div className="relative z-10 text-center md:text-left">
                       {/* Icon */}
                       <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                        <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${dream.gradient} p-0.5`}>
+                        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${dream.gradient} p-0.5 inline-block`}>
                           <div className="w-full h-full bg-pearl-white rounded-full flex items-center justify-center">
-                            <Icon className="w-8 h-8 text-neon-pink animate-sparkle" />
+                            <Icon className="w-7 h-7 md:w-8 md:h-8 text-neon-pink animate-sparkle" />
                           </div>
                         </div>
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-2xl font-bold princess-text mb-4 group-hover:animate-glow">
+                      <h3 className="text-xl md:text-2xl font-bold princess-text mb-4 group-hover:animate-glow">
                         {dream.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-foreground/80 leading-relaxed">
+                      <p className="text-foreground/80 leading-relaxed text-sm md:text-base">
                         {dream.description}
                       </p>
 
@@ -120,7 +120,7 @@ export const DreamsSection = () => {
 
         {/* Future Message */}
         <div className="text-center mt-16 fade-in">
-          <div className="glass-card p-10 max-w-4xl mx-auto hover-glow relative overflow-hidden">
+          <div className="glass-card p-6 md:p-10 max-w-4xl mx-auto hover-glow relative overflow-hidden">
             {/* Background Hearts */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
               <div className="absolute top-4 left-8 animate-float">💖</div>
@@ -130,15 +130,15 @@ export const DreamsSection = () => {
             </div>
 
             <div className="relative z-10">
-              <Star className="w-16 h-16 mx-auto text-neon-pink animate-sparkle mb-6" />
-              <p className="text-3xl princess-text font-bold mb-6">
+              <Star className="w-12 h-12 md:w-16 md:h-16 mx-auto text-neon-pink animate-sparkle mb-6" />
+              <p className="text-2xl md:text-3xl princess-text font-bold mb-6">
                 Princess Zoella, Our Future is Bright ✨
               </p>
-              <p className="text-lg text-foreground/90 leading-relaxed mb-4">
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-4">
                 Every dream we chase, every adventure we take, every moment we share - 
                 they're all more beautiful because they're with you.
               </p>
-              <p className="text-xl princess-text font-bold">
+              <p className="text-lg md:text-xl princess-text font-bold">
                 Together, we'll make magic happen 💖👑
               </p>
             </div>

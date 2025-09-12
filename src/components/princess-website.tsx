@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Navigation } from "./layout/navigation";
 import { FloatingHearts } from "./effects/floating-hearts";
 import { InteractiveHeart } from "./interactive-heart";
@@ -18,50 +18,71 @@ import { LoveQuotesSection } from "./sections/love-quotes-section";
 import { DreamsSection } from "./sections/dreams-section";
 import { SurpriseSection } from "./sections/surprise-section";
 
+const sections = [
+  { id: "home", component: HeroSection },
+  { id: "timeline", component: TimelineSection },
+  { id: "special", component: SpecialSection },
+  { id: "quotes", component: LoveQuotesSection },
+  { id: "dreams", component: DreamsSection },
+  { id: "surprise", component: SurpriseSection },
+];
+
 export const PrincessWebsite = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [showSecret, setShowSecret] = useState(false);
   const [showMobileSheet, setShowMobileSheet] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Secret key combination (Ctrl+Shift+P)
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key === 'P') {
         setShowSecret(true);
       }
     };
-    
     document.addEventListener('keydown', handleKeyPress);
-    
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
       document.removeEventListener('keydown', handleKeyPress);
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
     };
   }, []);
 
   const handleRefresh = async () => {
-    // Refresh the page with love
     setRefreshKey(prev => prev + 1);
     await new Promise(resolve => setTimeout(resolve, 1000));
   };
 
   const handleSwipeUp = () => {
-    const sections = ["home", "timeline", "special", "quotes", "dreams", "surprise"];
-    const currentIndex = sections.indexOf(activeSection);
+    const currentIndex = sections.findIndex(s => s.id === activeSection);
     if (currentIndex < sections.length - 1) {
-      setActiveSection(sections[currentIndex + 1]);
+      document.getElementById(sections[currentIndex + 1].id)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const handleSwipeDown = () => {
-    const sections = ["home", "timeline", "special", "quotes", "dreams", "surprise"];
-    const currentIndex = sections.indexOf(activeSection);
+    const currentIndex = sections.findIndex(s => s.id === activeSection);
     if (currentIndex > 0) {
-      setActiveSection(sections[currentIndex - 1]);
+      document.getElementById(sections[currentIndex - 1].id)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -69,63 +90,48 @@ export const PrincessWebsite = () => {
     setShowMobileSheet(true);
   };
 
-  const renderSection = () => {
-    switch (activeSection) {
-      case "home":
-        return <HeroSection />;
-      case "timeline":
-        return <TimelineSection />;
-      case "special":
-        return <SpecialSection />;
-      case "quotes":
-        return <LoveQuotesSection />;
-      case "dreams":
-        return <DreamsSection />;
-      case "surprise":
-        return <SurpriseSection />;
-      default:
-        return <HeroSection />;
-    }
-  };
-
   return (
     <PullToRefresh onRefresh={handleRefresh}>
       <div className="min-h-screen relative overflow-x-hidden" key={refreshKey}>
-        {/* Background Effects */}
         <FloatingHearts />
         <ConfettiEffect />
         <FloatingLoveMessages />
         
-        {/* Mobile Gesture Zone */}
         <MobileGestureZone 
           onSwipeUp={handleSwipeUp}
           onSwipeDown={handleSwipeDown}
           onDoubleTap={handleDoubleTap}
         />
         
-        {/* Navigation */}
-        <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <Navigation activeSection={activeSection} setActiveSection={(id) => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+            setActiveSection(id);
+        }} />
         
-        {/* Main Content */}
-        <main className="pt-16 md:pt-20">
-          {renderSection()}
+        <main>
+          {sections.map(({ id, component: Component }, index) => (
+            <section
+              key={id}
+              id={id}
+              ref={(el) => (sectionRefs.current[index] = el)}
+              className="min-h-screen flex items-center justify-center"
+            >
+              <Component />
+            </section>
+          ))}
         </main>
         
-        {/* Interactive Elements */}
         <InteractiveHeart />
         <FloatingLoveButton />
         <LoveNotifications />
         
-        {/* Mobile Bottom Sheet */}
         <MobileBottomSheet 
           isOpen={showMobileSheet} 
           onClose={() => setShowMobileSheet(false)} 
         />
         
-        {/* Secret Page */}
         <SecretPage isOpen={showSecret} onClose={() => setShowSecret(false)} />
         
-        {/* Welcome Message for Princess */}
         {activeSection === "home" && (
           <div className="fixed top-1/2 left-4 transform -translate-y-1/2 z-20 hidden lg:block">
             <div className="glass-card p-4 max-w-xs">
@@ -142,7 +148,6 @@ export const PrincessWebsite = () => {
           </div>
         )}
 
-        {/* Mobile Welcome Message */}
         {activeSection === "home" && (
           <div className="fixed bottom-20 left-4 right-4 z-20 md:hidden">
             <div className="glass-card p-3 text-center">
@@ -150,7 +155,7 @@ export const PrincessWebsite = () => {
                 Welcome, Princess Zoella 👑
               </p>
               <p className="text-xs text-foreground/60 mt-1">
-                Double tap anywhere for surprises! ✨
+                Double tap for surprises! ✨
               </p>
             </div>
           </div>

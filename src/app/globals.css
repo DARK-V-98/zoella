@@ -191,6 +191,7 @@
   .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: var(--radius);
@@ -224,10 +225,13 @@
     transition: all 0.3s ease;
   }
 
-  .hover-glow:hover {
-    filter: drop-shadow(0 0 25px hsl(var(--hot-pink))) drop-shadow(0 0 15px hsl(var(--deep-purple)));
-    transform: translateY(-5px) scale(1.02);
+  @media (hover: hover) {
+    .hover-glow:hover {
+      filter: drop-shadow(0 0 25px hsl(var(--hot-pink))) drop-shadow(0 0 15px hsl(var(--deep-purple)));
+      transform: translateY(-5px) scale(1.02);
+    }
   }
+
 
   .fade-in {
     animation: fadeIn 0.8s ease-out forwards;
@@ -247,6 +251,7 @@
   }
 
   .backface-hidden {
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
@@ -259,9 +264,11 @@
   }
 
   /* Glassmorphism Enhancement */
-  .glass-card:hover {
-    background: hsla(340, 40%, 95%, 0.35);
-    border-color: hsla(320, 60%, 80%, 0.25);
+  @media (hover: hover) {
+    .glass-card:hover {
+      background: hsla(340, 40%, 95%, 0.35);
+      border-color: hsla(320, 60%, 80%, 0.25);
+    }
   }
 
   /* Text Selection */
@@ -307,36 +314,38 @@
 
   /* Mobile text scaling */
   .mobile-heading {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
   
   .mobile-subheading {
-    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-size: clamp(1.25rem, 5vw, 2rem);
   }
   
   .mobile-body {
-    font-size: clamp(0.875rem, 3vw, 1.125rem);
+    font-size: clamp(0.9rem, 4vw, 1.125rem);
   }
 
   @media (max-width: 768px) {
     .glass-card {
       backdrop-filter: blur(8px);
-      padding: 1rem;
-    }
-    
-    .princess-text {
-      font-size: clamp(1.5rem, 5vw, 3rem);
+      -webkit-backdrop-filter: blur(8px);
     }
   }
 
   /* Touch-friendly interactions */
-  .touch-bounce:active {
-      transform: scale(0.95);
-      transition: transform 0.1s ease;
-  }
-  .glass-card:active {
-    transform: scale(0.98);
-    background: hsla(340, 40%, 95%, 0.4);
+  .touch-manipulation {
+    touch-action: manipulation;
   }
 
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .glass-card:active {
+      transform: scale(0.98);
+      background: hsla(340, 40%, 95%, 0.4);
+      transition: transform 0.1s ease-out;
+    }
+  }
 }

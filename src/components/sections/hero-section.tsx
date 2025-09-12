@@ -13,49 +13,49 @@ export const HeroSection = () => {
 
   return (
     <section 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="w-full min-h-screen flex items-center justify-center relative overflow-hidden p-4"
     >
       {/* Main Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-4xl mx-auto">
         {showText && (
           <div className="fade-in">
             {/* Crown Icon */}
-            <div className="mb-8">
-              <Crown className="w-16 h-16 mx-auto text-neon-pink animate-glow sparkle-text" />
+            <div className="mb-6 md:mb-8">
+              <Crown className="w-14 h-14 md:w-16 md:h-16 mx-auto text-neon-pink animate-glow sparkle-text" />
             </div>
 
             {/* Welcome Text */}
-            <h1 className="mobile-heading md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="mobile-heading font-bold mb-4 md:mb-6 leading-tight">
               <span className="block princess-text animate-glow">Welcome,</span>
-              <span className="block mobile-heading md:text-8xl princess-text animate-rainbow">
+              <span className="block mobile-heading princess-text animate-rainbow">
                 Princess Zoella
               </span>
             </h1>
 
             {/* Heart Animation */}
-            <div className="mb-6 md:mb-8 flex justify-center items-center">
+            <div className="mb-4 md:mb-8 flex justify-center items-center">
               <Heart className="w-8 h-8 md:w-12 md:h-12 text-neon-pink animate-heartbeat" />
-              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-neon-purple animate-sparkle mx-2 md:mx-4 mt-1 md:mt-2" />
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-neon-purple animate-sparkle mx-2 md:mx-4" />
               <Heart className="w-8 h-8 md:w-12 md:h-12 text-neon-pink animate-heartbeat" style={{animationDelay: '0.5s'}} />
             </div>
 
             {/* Love Quote */}
-            <p className="mobile-subheading md:text-2xl text-foreground/90 mb-4 md:mb-6 font-medium px-4 italic">
+            <p className="mobile-subheading text-foreground/90 mb-4 md:mb-6 font-medium italic">
               "You are my sun, my moon, and all my stars" 🌟
             </p>
             
             {/* Subtitle */}
-            <p className="mobile-body md:text-lg text-foreground/70 mb-6 md:mb-8 px-4">
+            <p className="mobile-body text-foreground/70 mb-6 md:mb-8">
               You light up my world like no one else, Princess Zoella 💖
             </p>
 
             {/* Magical Message */}
-            <div className="glass-card p-4 md:p-8 mx-auto max-w-2xl hover-glow">
-              <p className="mobile-body md:text-xl text-foreground leading-relaxed">
+            <div className="glass-card p-6 md:p-8 mx-auto max-w-2xl hover-glow">
+              <p className="mobile-body text-foreground leading-relaxed">
                 This magical place is created with all my love, just for you. 
                 Every sparkle, every heart, every color represents how special you are to me.
                 <br className="hidden md:block" />
-                <span className="block mt-2 md:inline md:mt-0 princess-text font-bold">My beautiful Princess ✨</span>
+                <span className="block mt-2 princess-text font-bold">My beautiful Princess ✨</span>
               </p>
             </div>
           </div>

@@ -38,10 +38,10 @@ export const TimelineSection = () => {
       <div className="container mx-auto max-w-4xl">
         {/* Section Header */}
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold princess-text mb-6">
+          <h2 className="mobile-heading font-bold princess-text mb-6">
             Our Love Story 💕
           </h2>
-          <p className="text-xl text-foreground/80">
+          <p className="mobile-body text-foreground/80">
             Every chapter of our journey together
           </p>
         </div>
@@ -59,16 +59,16 @@ export const TimelineSection = () => {
             return (
               <div 
                 key={event.id} 
-                className={`relative mb-16 fade-in ${!isEven ? 'md:text-right' : 'md:text-left'}`}
+                className={`relative mb-12 md:mb-16 fade-in`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-2 md:left-1/2 top-10 transform md:-translate-x-1/2 -translate-y-2">
+                <div className="absolute left-1.5 md:left-1/2 top-10 transform md:-translate-x-1/2 -translate-y-2">
                   <div className="w-6 h-6 bg-neon-pink rounded-full border-4 border-pearl-white shadow-glow animate-heartbeat"></div>
                 </div>
 
                 {/* Event Content */}
-                <div className={`ml-12 md:ml-0 ${!isEven ? 'md:mr-8 md:pr-16' : 'md:ml-8 md:pl-16'}`}>
+                <div className={`ml-12 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-16' : 'md:ml-auto md:pl-0 md:pr-16 text-left md:text-right'}`}>
                   <div className="glass-card p-6 hover-glow">
                     {/* Icon & Date */}
                     <div className={`flex items-center gap-3 mb-4 ${!isEven ? 'md:justify-end' : ''}`}>
@@ -77,12 +77,12 @@ export const TimelineSection = () => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-bold princess-text mb-3">
+                    <h3 className="text-xl md:text-2xl font-bold princess-text mb-3">
                       {event.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-foreground/90 leading-relaxed">
+                    <p className="text-foreground/90 leading-relaxed text-sm md:text-base">
                       {event.description}
                     </p>
                   </div>
@@ -95,10 +95,10 @@ export const TimelineSection = () => {
         {/* Timeline End */}
         <div className="text-center mt-16 fade-in">
           <div className="glass-card p-8 max-w-2xl mx-auto hover-glow">
-            <p className="text-xl princess-text font-bold mb-4">
+            <p className="text-lg md:text-xl princess-text font-bold mb-4">
               And this is just the beginning... 💖
             </p>
-            <p className="text-foreground/80">
+            <p className="text-foreground/80 text-sm md:text-base">
               Our story continues to grow more beautiful with each passing day
             </p>
           </div>
