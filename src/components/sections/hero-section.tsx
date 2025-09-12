@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
-import { Heart, Crown, Sparkles } from "lucide-react";
+import { Heart, Crown, Sparkles, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export const HeroSection = () => {
@@ -57,6 +57,16 @@ export const HeroSection = () => {
                 <br className="hidden md:block" />
                 <span className="block mt-2 princess-text font-bold">My beautiful Princess ✨</span>
               </p>
+            </div>
+
+            {/* Messenger Teaser */}
+            <div className="mt-6 glass-card p-4 mx-auto max-w-lg hover-glow">
+              <div className="flex items-center justify-center gap-3">
+                <MessageCircle className="w-5 h-5 text-neon-purple animate-swing" />
+                <p className="mobile-body text-foreground/80">
+                  P.S. I've built a special messenger just for us. Find it in the stars above!
+                </p>
+              </div>
             </div>
           </div>
         )}
