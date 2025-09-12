@@ -26,7 +26,7 @@ export default function RootLayout({
         <div className="antialiased">
           {children}
         </div>
-        <footer className="text-center p-4 text-pearl-white/80 relative z-10">
+        <footer className="text-center p-4 text-princess-pink relative z-10">
           Made by Vishwa Vidarshana with love for Zoella 💖
         </footer>
         <Toaster />
