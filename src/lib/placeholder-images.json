@@ -1,3 +1,58 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-zoella",
+      "description": "A beautiful portrait of Zoella",
+      "imageUrl": "https://picsum.photos/seed/zoella-hero/1200/675",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Zoella smiling on a sunny day",
+      "imageUrl": "https://picsum.photos/seed/zoella-gal1/600/800",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Zoella at the beach",
+      "imageUrl": "https://picsum.photos/seed/zoella-gal2/600/800",
+      "imageHint": "woman beach"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Zoella with a cup of coffee",
+      "imageUrl": "https://picsum.photos/seed/zoella-gal3/600/800",
+      "imageHint": "woman coffee"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Zoella in the city",
+      "imageUrl": "https://picsum.photos/seed/zoella-gal4/600/800",
+      "imageHint": "woman city"
+    },
+    {
+      "id": "wish-1",
+      "description": "A beautiful bouquet of roses",
+      "imageUrl": "https://picsum.photos/seed/wish1/400/300",
+      "imageHint": "rose bouquet"
+    },
+    {
+      "id": "wish-2",
+      "description": "A designer handbag",
+      "imageUrl": "https://picsum.photos/seed/wish2/400/300",
+      "imageHint": "designer handbag"
+    },
+    {
+      "id": "wish-3",
+      "description": "A trip to Paris",
+      "imageUrl": "https://picsum.photos/seed/wish3/400/300",
+      "imageHint": "paris eiffel"
+    },
+    {
+      "id": "wish-4",
+      "description": "A spa day package",
+      "imageUrl": "https://picsum.photos/seed/wish4/400/300",
+      "imageHint": "spa day"
+    }
+  ]
 }
