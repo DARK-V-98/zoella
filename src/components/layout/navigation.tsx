@@ -43,7 +43,6 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const commonProps = {
-                  key: item.id,
                   className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover-glow touch-manipulation tap-highlight-transparent ${
                     activeSection === item.id 
                       ? 'bg-neon-pink text-pearl-white shadow-glow' 
@@ -54,6 +53,7 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
                 if ('href' in item && item.href) {
                   return (
                     <a
+                      key={item.id}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -67,6 +67,7 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
 
                 return (
                   <button
+                    key={item.id}
                     {...commonProps}
                     onClick={() => {
                       const element = document.getElementById(item.id);
