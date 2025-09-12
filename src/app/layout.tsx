@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "A Love Letter to Princess Zoella",
@@ -14,8 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className="antialiased">
-        {children}
+      <body>
+        <Image
+          src="/bg.jpg"
+          alt="Enchanted background"
+          fill
+          className="object-cover -z-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-princess-pink/20 via-soft-lavender/30 to-rose-blush/40 -z-10" />
+        <div className="antialiased">
+          {children}
+        </div>
         <Toaster />
       </body>
     </html>

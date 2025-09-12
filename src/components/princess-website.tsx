@@ -90,7 +90,7 @@ export const PrincessWebsite = () => {
 
   return (
     <PullToRefresh onRefresh={handleRefresh}>
-      <div className="min-h-screen bg-gradient-dreamy relative overflow-x-hidden" key={refreshKey}>
+      <div className="min-h-screen relative overflow-x-hidden" key={refreshKey}>
         {/* Background Effects */}
         <FloatingHearts />
         <ConfettiEffect />

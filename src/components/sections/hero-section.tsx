@@ -15,17 +15,6 @@ export const HeroSection = () => {
     <section 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      <Image 
-        src="https://picsum.photos/seed/romantic-bg/1920/1080"
-        alt="Romantic background"
-        fill
-        className="object-cover"
-        data-ai-hint="romantic background"
-        priority
-      />
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-princess-pink/20 via-soft-lavender/30 to-rose-blush/40" />
-      
       {/* Main Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {showText && (
