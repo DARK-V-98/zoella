@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: "Zoella's Zone",
-  description: 'A special place for Zoella',
+  title: "A Love Letter to Princess Zoella",
+  description: 'Every pixel crafted with love, for the one and only Princess Zoella.',
 };
 
 export default function RootLayout({
@@ -16,17 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+      <body className="antialiased">
+        {children}
         <Toaster />
       </body>
     </html>
