@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { Heart, Sparkles, Quote, Crown, Star, Home } from "lucide-react";
+import { Heart, Sparkles, Quote, Crown, Star, Home, MessageCircle } from "lucide-react";
 
 interface NavigationProps {
   activeSection: string;
@@ -17,6 +17,7 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
     { id: "quotes", label: "Love Quotes", icon: Quote },
     { id: "dreams", label: "Future Dreams", icon: Star },
     { id: "surprise", label: "Surprise", icon: Sparkles },
+    { id: "messenger", label: "Messenger", icon: MessageCircle, href: "https://zmassenger.zmes.vercel.app" },
   ];
 
   return (
@@ -41,9 +42,32 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
               {navItems.map((item) => {
                 const Icon = item.icon;
+                const commonProps = {
+                  key: item.id,
+                  className: `flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover-glow touch-manipulation tap-highlight-transparent ${
+                    activeSection === item.id 
+                      ? 'bg-neon-pink text-pearl-white shadow-glow' 
+                      : 'text-foreground hover:text-neon-pink'
+                  }`,
+                };
+
+                if ('href' in item && item.href) {
+                  return (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      {...commonProps}
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span className="text-sm">{item.label}</span>
+                    </a>
+                  );
+                }
+
                 return (
                   <button
-                    key={item.id}
+                    {...commonProps}
                     onClick={() => {
                       const element = document.getElementById(item.id);
                       if (element) {
@@ -52,11 +76,6 @@ export const Navigation = ({ activeSection, setActiveSection }: NavigationProps)
                       setActiveSection(item.id);
                       setIsOpen(false);
                     }}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover-glow touch-manipulation tap-highlight-transparent ${
-                      activeSection === item.id 
-                        ? 'bg-neon-pink text-pearl-white shadow-glow' 
-                        : 'text-foreground hover:text-neon-pink'
-                    }`}
                   >
                     <Icon className="w-4 h-4" />
                     <span className="text-sm">{item.label}</span>
