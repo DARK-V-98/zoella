@@ -1,5 +1,10 @@
+import { PasswordProtection } from '@/components/password-protection';
 import { PrincessWebsite } from '@/components/princess-website';
 
 export default function Home() {
-  return <PrincessWebsite />;
+  return (
+    <PasswordProtection>
+      <PrincessWebsite />
+    </PasswordProtection>
+  );
 }
